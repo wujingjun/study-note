@@ -131,6 +131,12 @@ SqlSession相当于JDBC的preparestatement![image-20201001175233278](mybatisimag
 
 ![image-20201002104503786](mybatisimage/image-20201002104503786.png)
 
+```
+本人遇到了问题：
+java.security.cert.CertPathValidatorException: Path does not chain with any of the trust anchors
+解决方案：把url中的useSSL=true改为false
+```
+
 ### 10.拓展![image-20201002105745047](mybatisimage/image-20201002105745047.png)
 
 
@@ -212,3 +218,20 @@ namespace中的报名要和Dao/Mapper接口的包名一致
 
 （注意：增删改需要提交事务：SqlSession.commit()）
 
+###  7.分析错误
+
+```
+注意：读错要从下往上读
+```
+
++ 标签不要匹配错
+
++ resource绑定mapper,需要使用路径
+
++ 程序配置文件必须符合规范
+
++ NullPointerExceptiion,没有注册到资源
+
++ 输出的xml文件中存在中文乱码问题
+
++ ###### maven资源没有导出问题
