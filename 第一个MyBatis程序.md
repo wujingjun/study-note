@@ -137,3 +137,78 @@ SqlSession相当于JDBC的preparestatement![image-20201001175233278](mybatisimag
 
 
 
+## 增删改查实现（CRUD）
+
+### 1.namespace
+
+namespace中的报名要和Dao/Mapper接口的包名一致
+
+### 2.select
+
+选择，查询语句；
+
++ id：就是对应的namespace中的方法名；
++ resultType:Sql语句执行的返回值！
++ parameterType:参数类型！
+
+#### 代码实现
+
+​	dao层代码实现:
+
+![image-20201002131713170](../mybatisimage/image-20201002131713170.png)
+
+配置文件编写： ![image-20201002131909944](../mybatisimage/image-20201002131909944.png)
+
+测试代码：![image-20201002132245980](../mybatisimage/image-20201002132245980.png)
+
+
+
+### 3.insert
+
+#### 代码实现
+
++ dao层代码实现
+
+![image-20201002132849634](mybatisimage/image-20201002132849634.png)
+
++ 配置文件编写![image-20201002132943922](mybatisimage/image-20201002132943922.png)
+
++ 测试代码编写
+
+![image-20201002133236812](mybatisimage/image-20201002133236812.png)
+
+```
+注意：增删改需要提交事务
+```
+
+### 4.update
+
+#### 代码实现
+
++ dao层
++ ![image-20201002133701499](mybatisimage/image-20201002133701499.png)
++ 配置文件编写![image-20201002133635097](mybatisimage/image-20201002133635097.png)
++ 测试代码编写![image-20201002133741037](mybatisimage/image-20201002133741037.png)
+
+### 5.delete
+
+#### 代码实现
+
++ dao层
+
+  ![image-20201002133947815](mybatisimage/image-20201002133947815.png)
+
++ 配置文件编写
+
+![image-20201002134040652](mybatisimage/image-20201002134040652.png)
+
++ 测试代码编写![image-20201002134104990](mybatisimage/image-20201002134104990.png)
+
+
+
+### 6.总结
+
+编写接口--->编写配置文件--->编写测试代码
+
+（注意：增删改需要提交事务：SqlSession.commit()）
+
