@@ -155,11 +155,11 @@ namespace中的报名要和Dao/Mapper接口的包名一致
 
 ​	dao层代码实现:
 
-![image-20201002131713170](../mybatisimage/image-20201002131713170.png)
+![image-20201002131713170](mybatisimage/image-20201002131713170.png)
 
-配置文件编写： ![image-20201002131909944](../mybatisimage/image-20201002131909944.png)
+配置文件编写： ![image-20201002131909944](mybatisimage/image-20201002131909944.png)
 
-测试代码：![image-20201002132245980](../mybatisimage/image-20201002132245980.png)
+测试代码：![image-20201002132245980](mybatisimage/image-20201002132245980.png)
 
 
 
@@ -202,7 +202,7 @@ namespace中的报名要和Dao/Mapper接口的包名一致
 
 ![image-20201002134040652](mybatisimage/image-20201002134040652.png)
 
-+ 测试代码编写![image-20201002134104990](mybatisimage/image-20201002134104990.png)
++ 测试代码编写![image-20201002134104990](/mybatisimage/image-20201002134104990.png)
 
 
 
