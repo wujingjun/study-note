@@ -992,13 +992,30 @@ SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advi
 
 ![image-20201011171422096](springimage/image-20201011171422096.png)
 
-```
+```xml
 configuration修改为configLocation
+
+自己优化后
+<!-- 获取配置文件   -->
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:db.properties"/>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+注意:db.properties改为
+jdbc.driver=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/wjj?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=UTC
+jdbc.username=root
+jdbc.password=1817646108
 ```
 
 + mapper类修改
 
-增加实现类
+增加实现类（因为需要springIOC容器管理注入SqlSessionTemplate类）
 
 ![image-20201011171703236](springimage/image-20201011171703236.png)
 
