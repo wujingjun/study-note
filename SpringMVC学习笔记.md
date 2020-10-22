@@ -1670,21 +1670,61 @@ session在页面跳转后也能够保存信息
 
 # 文件上传和下载
 
-+ 导入依赖
+### 准备工作
+
+​	文件上传是项目开发中最常见的功能之一，springmvc可以很好的支持文件上传，但是SpringMVC上下文中默认没有装配MultipartResolver,因此默认情况下其不能处理文件上传工作。如果想使用Spring的文件上传功能，则需要在上下文中配置MultipartResolver.
+
+​	前端表单要求：为了能上传文件，必须将表单的method设置为POST,并将enctype设置为multipart/form-data.只有在这样的情况下，浏览器才会把用户选择的文件以二进制数据发送给服务器；
+
+​	对表单中的enctype属性做个详细的说明：
+
++ application/x-www=form-urlencoded:默认方式，只处理表单域中的value属性值，采用这种编码方式的表单会将表单域中的值处理成URL编码方式。
++ multipart/form-data:这种编码方式会以二进制流的方式来处理表单数据，这种编码方式会把文件域指定文件的内容也封装到请求参数中，不会对字符编码。
++ text/plain:除了把空格转换为“+”号外，其他字符都不做编码处理，这种方式使用直接通过表单发送邮件
+
+```html
+<from action="" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"/>
+    <input type="submit"/>
+</from>
+```
+
+​		一旦设置了enctype为multipart/form-data,浏览器即会采用二进制流的方式来处理表单数据，而对于文件上传的处理则涉及在服务器端解析原始的HTTP响应。在2003年，Apache Software Foundation发布了开源的Commons FileUpload组件，其很快成为Servlet/JSP程序员上传文件的最佳选择。
+
++ Servlet3.0规范已经提供方法来处理文件上传，但这种上传须在Servlet中完成。
++ 而Spring MVC则提供了更简单的封装。
++ Spring MVC为文件上传提供了直接的支持，这种支持使用即插即用的MultipartResolver实现的
++ Spring MVC使用Apache Commons FileUpload技术实现了一个MultipartResolver实现类：CommonsMultipartResolver.因此，SpringMVC的文件上传还需要依赖Apache Commons FileUpload的组件。
+
+
+
+### 文件上传
+
++ 导入文件上传的jar包，commons-fileupload,Maven会自动帮我们导入它的依赖包commons-io包
 
 ![image-20201021161845427](SpringMVCimage/image-20201021161845427.png)
 
 + 编写上传页面
 
-![image-20201021161913478](SpringMVCimage/image-20201021161913478.png)
+![image-20201022100340921](SpringMVCimage/image-20201022100340921.png)
 
-+ 配置文件上传文件配置
++ 配置bean:multipartResolver
+
+【注意：这个bean的id必须为：multipartResolver,否则上传文件会400的错误！】
 
 ![image-20201021162011324](SpringMVCimage/image-20201021162011324.png)
 
 ```
-id不能改
+maxUploadSize和maxInMemorySize可以不配
 ```
+
+​	CommonsMultipartFile的常用方法：
+
+1. String getOriginalFilename():获取上传文件的原名
+
+2. InputStream getInputStream():获取文件流
+
+3. void transferTo(File dest):将上传文件保存到一个目录文件中
 
 + 编写Controller类
 
@@ -1692,9 +1732,42 @@ id不能改
 
 ![image-20201021162238586](SpringMVCimage/image-20201021162238586.png)
 
-第二种方式
++ 测试文件上传                                                           
+
+### 第二种文件上传方式
+
+1. 编写Controller
 
 ![image-20201021162322414](SpringMVCimage/image-20201021162322414.png)
+
+2. 前端表单提交地址修改
+3. 访问提交测试
+
+
+
+
+
+### 文件上传
+
+​	文件上传步骤：
+
+1. 设置response响应头
+2. 读取文件 - -InputStream
+3. 写出文件 --OutputStream
+4. 执行操作
+5. 关闭流（先开后关）
+
+代码实现：
+
+![image-20201022102918623](SpringMVCimage/image-20201022102918623.png)
+
+
+
+
+
+
+
+
 
 
 
