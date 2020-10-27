@@ -1491,7 +1491,7 @@ fastjson三个主要的类：
 
 ### jQuery.ajax
 
-+ 纯JS原生实现Ajax我们不去讲解这里，之际使用jqery提供的，方便学习和使用，避免重复造轮子，有兴趣的同学可以去了解下JS原生XMLHttpRequest!
++ 纯JS原生实现Ajax我们不去讲解这里，实际使用jqery提供的，方便学习和使用，避免重复造轮子，有兴趣的同学可以去了解下JS原生XMLHttpRequest!
 + Ajax的核心时XMLHttpRequest对象（XHR)。XHR为向服务器发送请求和鸡西服务器响应提供了接口。能够以异步方式从服务器获取新数据。
 + jQuery提供多个与AJAX有关的方法
 + 通过jQuery AJAX方法，你能够使用HTTP Get和HTTP POST从远程服务器上请求文本、HTML、XML或JSON-同时您能够把这些外部数据直接载入网页的被选元素中。
@@ -1747,7 +1747,7 @@ maxUploadSize和maxInMemorySize可以不配
 
 
 
-### 文件上传
+### 文件下载
 
 ​	文件上传步骤：
 
@@ -1771,3 +1771,4 @@ maxUploadSize和maxInMemorySize可以不配
 
 
 
+ 
