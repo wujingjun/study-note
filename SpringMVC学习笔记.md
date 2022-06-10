@@ -248,7 +248,7 @@ DispatcherServlet的作用是将请求分发到不同的处理器。从Spring 2.
 
 1. DispatcherServlete表示前端控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求。
 
-+ 我们假设亲球的URL为：http:.localhost:8080/SpringMVC/hello
++ 我们假设请求的URL为：http:.localhost:8080/SpringMVC/hello
 + 如上url拆分成三部分：
 + http://localhost:8080服务器域名
 + SpringMVC表示部署在服务器上的web站点
